@@ -1,0 +1,1 @@
+{"C": 100, "decision_function_shape": "ovo", "degree": 1, "gamma": "scale", "kernel": "rbf"}
