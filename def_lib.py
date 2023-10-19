@@ -842,7 +842,7 @@ def run_svm_exp(
 
     # Đánh giá mô hình trên tập kiểm tra
     precision, recall, f1score, support = precision_recall_fscore_support(
-        y_test, y_pred, average=None, zero_division=0, digits=5
+        y_test, y_pred, average=None, zero_division=0
     )
 
     plot_bar_chart_svm(
