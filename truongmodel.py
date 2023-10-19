@@ -98,9 +98,7 @@ def fcnn1d_model(
 
     # Tạo mô hình từ các lớp đã định nghĩa
     model = Model(
-        inputs=input_layer,
-        outputs=output_layer,
-        name=f"fcnn1d_{num_dense_layers}_dense",
+        inputs=input_layer, outputs=output_layer, name=f"fcnn1d_{num_dense_layers}_dense"
     )
 
     if optimizers_func == "adam":

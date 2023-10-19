@@ -615,9 +615,9 @@ def run_exp(
     epochs,
     batch_size,
     e_patience,
-    num_conv_layers_per_maxpool=3,
+    num_conv_layers_per_maxpool=2,
     num_maxpools=1,
-    num_dense_layers=4,
+    num_dense_layers=5,
 ):
     seed = 42
     np.random.seed(seed)
@@ -632,14 +632,12 @@ def run_exp(
     # Construct model #
     ###################
     if model_name in ["fcnn1d"]:
-        name_saved = name_saved.replace(
-            "fcnn1d", "fcnn1d" + f"-{num_dense_layers}dense"
-        )
+        name_saved = name_saved.replace("fcnn1d", "fcnn1d" + f"-{num_dense_layers}dense")
         model = truongmodel.fcnn1d_model(
             input_shape=(34),
-            num_classes=num_classes,
+            num_classes=10,
             dropout_fc=0.2,
-            num_dense_layers=num_dense_layers,  # 4
+            num_dense_layers=num_dense_layers,  # 5
         )
 
     elif model_name in ["conv1d"]:
@@ -652,7 +650,7 @@ def run_exp(
             input_shape=(34, 1),
             num_classes=num_classes,
             num_maxpools=num_maxpools,  # 1
-            num_conv_layers_per_maxpool=num_conv_layers_per_maxpool,  # 3
+            num_conv_layers_per_maxpool=num_conv_layers_per_maxpool,  # 2
             dropout_cnn=0.2,
             dropout_f=0.5,
         )
@@ -777,13 +775,13 @@ def run_exp(
     # Print the classification report
     print(
         "\nClassification Report:\n",
-        classification_report(ytrue, ypred, target_names=class_names, zero_division=0),
+        classification_report(ytrue, ypred, target_names=class_names, zero_division=0, digits=5),
     )
 
     with open(f"statistics/classification_report_{name_saved}.txt", "w") as f:
         f.writelines(
             classification_report(
-                ytrue, ypred, target_names=class_names, zero_division=0
+                ytrue, ypred, target_names=class_names, zero_division=0, digits=5
             )
         )
     f.close()
@@ -844,7 +842,7 @@ def run_svm_exp(
 
     # Đánh giá mô hình trên tập kiểm tra
     precision, recall, f1score, support = precision_recall_fscore_support(
-        y_test, y_pred, average=None, zero_division=0
+        y_test, y_pred, average=None, zero_division=0, digits=5
     )
 
     plot_bar_chart_svm(
@@ -901,14 +899,14 @@ def run_svm_exp(
     print(
         "\nClassification Report:\n",
         classification_report(
-            y_test, y_pred, target_names=class_names, zero_division=0
+            y_test, y_pred, target_names=class_names, zero_division=0, digits=5
         ),
     )
 
     with open(f"statistics/classification_report_{name_saved}.txt", "w") as f:
         f.writelines(
             classification_report(
-                y_test, y_pred, target_names=class_names, zero_division=0
+                y_test, y_pred, target_names=class_names, zero_division=0, digits=5
             )
         )
     f.close()
