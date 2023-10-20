@@ -1,1 +1,0 @@
-C: 100, Kernel: rbf, Gamma: scale, Degree: 1, Decision function: ovo

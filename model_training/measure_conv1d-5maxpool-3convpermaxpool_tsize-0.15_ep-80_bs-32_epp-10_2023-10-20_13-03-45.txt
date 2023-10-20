@@ -1,0 +1,8 @@
+Samples training set: 2368
+Samples validation set: 418
+Samples test set: 697
+Running time: 0:03:06.310131
+Memory used (MB): 610.52734
+Total epochs: 72
+Best train accuracy: 0.90541 / epoch: 59
+Best val accuracy: 0.95215 / epoch: 62
