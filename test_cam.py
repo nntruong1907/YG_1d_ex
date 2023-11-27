@@ -61,7 +61,7 @@ if __name__ == "__main__":
         "--model",
         "-m",
         type=str,
-        default="conv1d",
+        default="fcnn1d",
         help="model name: svm / fcnn1d / conv1d",
     )
 
