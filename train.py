@@ -1,9 +1,9 @@
 """
 Default command line parameter:
-    python train.py --model fcnn1d --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
+    python train.py --model fcnn1d --dense 4 --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
 
 Other:
-    python train.py --model conv1d --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
+    python train.py --model conv1d --maxpooling 1 --conv 3 --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
     python train.py --model svm --source data --C 100 --kernel rbf --gamma scale --df ovo --k_fold 5
     python train.py --model svm --source data --C 100 --kernel rbf --gamma scale --d 1 --df ovo --k_fold 5
 
@@ -45,6 +45,24 @@ if __name__ == "__main__":
         type=int,
         default=10,
         help="set the number of epoch patient, after this number of epoch if the results do not improve then stop learning",
+    )
+    parser.add_argument(
+        "--dense",
+        default=4,
+        type=int,
+        help="number of dense layer",
+    )
+    parser.add_argument(
+        "--maxpooling",
+        default=1,
+        type=int,
+        help="number of maxpooling layer",
+    )
+    parser.add_argument(
+        "--conv",
+        default=3,
+        type=int,
+        help="number of convolution layer per maxpooling",
     )
     parser.add_argument(
         "--C",
@@ -130,7 +148,7 @@ if __name__ == "__main__":
             + str(timestring)
         )
         if args.model in ["fcnn1d"]:
-            num_dense = 0
+            num_dense = args.dense
             run_exp(
                 name_saved=name_saved,
                 model_name=args.model,
@@ -147,8 +165,8 @@ if __name__ == "__main__":
                 num_dense_layers=num_dense,
             )
         elif args.model in ["conv1d"]:
-            num_maxpools = 1
-            num_conv_layers_per_maxpool = 3
+            num_maxpools = args.maxpooling
+            num_conv_layers_per_maxpool = args.conv
             run_exp(
                 name_saved=name_saved,
                 model_name=args.model,
