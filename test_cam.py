@@ -1,4 +1,4 @@
-# python test_cam.py --model fcnn1d
+# python test_cam.py --model fnn1d
 
 import pickle
 
@@ -61,8 +61,8 @@ if __name__ == "__main__":
         "--model",
         "-m",
         type=str,
-        default="fcnn1d",
-        help="model name: svm / fcnn1d / conv1d",
+        default="fnn1d",
+        help="model name: svm / fnn1d / conv1d",
     )
 
     args = parser.parse_args()

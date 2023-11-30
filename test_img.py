@@ -1,4 +1,4 @@
-# python test_img.py --model fcnn1d --data test/Warrior3.jpg
+# python test_img.py --model fnn1d --data test/Warrior3.jpg
 
 import os
 import tempfile
@@ -25,8 +25,8 @@ if __name__ == "__main__":
         "--model",
         "-m",
         type=str,
-        default="fcnn1d",
-        help="model name: svm / fcnn1d / conv1d",
+        default="fnn1d",
+        help="model name: svm / fnn1d / conv1d",
     )
 
     parser.add_argument(

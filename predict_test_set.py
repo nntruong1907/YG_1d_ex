@@ -15,8 +15,8 @@ if __name__ == "__main__":
         "--model",
         "-m",
         type=str,
-        default="fcnn",
-        help="model name: svm / fcnn / conv1d",
+        default="fnn",
+        help="model name: svm / fnn / conv1d",
     )
     parser.add_argument(
         "--folder_model", type=str, default="save_models", help="the folder save models"

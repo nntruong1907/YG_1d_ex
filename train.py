@@ -1,6 +1,6 @@
 """
 Default command line parameter:
-    python train.py --model fcnn1d --dense 4 --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
+    python train.py --model fnn1d --dense 4 --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
 
 Other:
     python train.py --model conv1d --maxpooling 1 --conv 3 --source data --test_size 0.15 --epochs 80 --batch_size 32 --e_patience 10
@@ -22,8 +22,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model",
         type=str,
-        default="fcnn1d",
-        help="model name: svm / fcnn1d / conv1d",
+        default="fnn1d",
+        help="model name: svm / fnn1d / conv1d",
     )
     parser.add_argument(
         "--source",
@@ -147,7 +147,7 @@ if __name__ == "__main__":
             + "_"
             + str(timestring)
         )
-        if args.model in ["fcnn1d"]:
+        if args.model in ["fnn1d"]:
             num_dense = args.dense
             run_exp(
                 name_saved=name_saved,
